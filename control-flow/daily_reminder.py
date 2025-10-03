@@ -1,28 +1,27 @@
-# control-flow/daily_reminder.py
-# Personal Daily Reminder
-# Demonstrates conditional statements, match case, and loops.
+# daily_reminder.py
 
-# Prompt for a single task
+# Step 1: Prompt for task details
 task = input("Enter your task: ")
-priority = input("Priority (high/medium/low): ").lower().strip()
-time_bound = input("Is it time-bound? (yes/no): ").lower().strip()
+priority = input("Priority (high/medium/low): ").lower()
+time_bound = input("Is it time-bound? (yes/no): ").lower()
 
-# Process task with match-case
+# Step 2: Match Case for priority
 match priority:
     case "high":
-        reminder = f"'{task}' is a high priority task"
+        message = f"Reminder: '{task}' is a high priority task"
     case "medium":
-        reminder = f"'{task}' is a medium priority task"
+        message = f"Reminder: '{task}' is a medium priority task"
     case "low":
-        reminder = f"'{task}' is a low priority task"
+        message = f"Note: '{task}' is a low priority task"
     case _:
-        reminder = f"'{task}' has an unknown priority"
+        message = f"'{task}' has an unknown priority level"
 
-# Modify reminder if time-bound
+# Step 3: Modify message if time-bound
 if time_bound == "yes":
-    reminder += " that requires immediate attention today!"
+    message += " that requires immediate attention today!"
 else:
-    reminder += ". Consider completing it when you have free time."
+    if priority == "low":
+        message += ". Consider completing it when you have free time."
 
-# Provide customized reminder
-print("\nReminder:", reminder)
+# Step 4: Display final reminder
+print(message)
